@@ -43,7 +43,7 @@ BaselineOfTeapot >> setUpDependencies: spec [
 			spec
 				repository: 'github://svenvc/NeoJSON';
 				loads: #( 'core' )
-			];
-		"baseline: 'ZincHTTPComponents' with: [ spec repository: 'github://svenvc/zinc' ];
+			]";
+		baseline: 'ZincHTTPComponents' with: [ spec repository: 'github://svenvc/zinc' ];
 		project: 'Zinc-Zodiac' copyFrom: 'ZincHTTPComponents' with: [ spec loads: 'Zinc-Zodiac-Core' ]"
 ]
