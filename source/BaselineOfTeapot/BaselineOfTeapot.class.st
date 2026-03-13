@@ -17,9 +17,9 @@ BaselineOfTeapot >> baseline: spec [
 			package: 'Teapot-Tools' with: [ spec requires: 'Teapot-Core' ];
 			package: 'Teapot-Tests' with: [ spec requires: 'Teapot-Core' ].
 
-		spec
+		"spec
 			for: (self pharoVersionsFrom: 10)
-			do: [ spec package: 'Teapot-Tests' with: [ spec requires: #( 'Zinc-Zodiac' ) ] ].
+			do: [ spec package: 'Teapot-Tests' with: [ spec requires: #( 'Zinc-Zodiac' ) ] ]."
 
 		spec
 			group: 'Tests' with: #( 'Teapot-Tests' );
@@ -44,6 +44,6 @@ BaselineOfTeapot >> setUpDependencies: spec [
 				repository: 'github://svenvc/NeoJSON';
 				loads: #( 'core' )
 			];
-		baseline: 'ZincHTTPComponents' with: [ spec repository: 'github://svenvc/zinc' ];
-		project: 'Zinc-Zodiac' copyFrom: 'ZincHTTPComponents' with: [ spec loads: 'Zinc-Zodiac-Core' ]
+		"baseline: 'ZincHTTPComponents' with: [ spec repository: 'github://svenvc/zinc' ];
+		project: 'Zinc-Zodiac' copyFrom: 'ZincHTTPComponents' with: [ spec loads: 'Zinc-Zodiac-Core' ]"
 ]
