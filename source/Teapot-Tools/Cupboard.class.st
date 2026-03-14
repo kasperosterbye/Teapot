@@ -142,7 +142,7 @@ Cupboard >> buildRefreshToolBarItem [
 		yourself
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 Cupboard >> buildRemoveToolBarItem [
     ^ SpToolbarButtonPresenter new
         label: 'Remove';
@@ -271,7 +271,7 @@ Cupboard >> onNewStaticServer [
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'actions' }
 Cupboard >> onRemoveServer [
     | pot |
     pot := self selectedTeapot.
