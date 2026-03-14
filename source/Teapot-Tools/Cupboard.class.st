@@ -142,6 +142,16 @@ Cupboard >> buildRefreshToolBarItem [
 		yourself
 ]
 
+{ #category : 'as yet unclassified' }
+Cupboard >> buildRemoveToolBarItem [
+    ^ SpToolbarButtonPresenter new
+        label: 'Remove';
+        icon: (self iconNamed: #remove ); 
+        action: [ self onRemoveServer ];
+        help: 'Stop and remove the selected Teapot';
+        yourself
+]
+
 { #category : 'initialization' }
 Cupboard >> buildStartToolBarItem [
 	
@@ -173,6 +183,7 @@ Cupboard >> buildToolbar [
 		addItem: self buildNewStaticToolBarItem;
 		addItem: self buildStartToolBarItem;
 		addItem: self buildStopToolBarItem;
+		addItem: self buildRemoveToolBarItem;
 		addItem: self buildBrowseToolBarItem;
 		addItem: self buildInspectToolBarItem;
 		yourself
@@ -260,6 +271,17 @@ Cupboard >> onNewStaticServer [
 
 ]
 
+{ #category : 'as yet unclassified' }
+Cupboard >> onRemoveServer [
+    | pot |
+    pot := self selectedTeapot.
+    pot ifNil: [ ^ self ].
+    pot server isRunning ifTrue: [ pot stop ].
+    Teapot teapotInstances remove: pot ifAbsent: [].
+    self refreshTeapots
+
+]
+
 { #category : 'actions' }
 Cupboard >> open [
 
@@ -286,5 +308,5 @@ Cupboard >> selectedTeapot [
 
 { #category : 'accessing' }
 Cupboard >> teapots [
-	^ Teapot allInstances
+	^ Teapot teapotInstances
 ]

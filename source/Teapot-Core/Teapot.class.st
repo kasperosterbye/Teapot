@@ -25,6 +25,9 @@ Class {
 		'defaultOutput',
 		'current'
 	],
+	#classInstVars : [
+		'teapotInstances'
+	],
 	#category : 'Teapot-Core',
 	#package : 'Teapot-Core'
 }
@@ -46,15 +49,36 @@ Teapot class >> configure: optionsAssociations [
 ]
 
 { #category : 'instance creation' }
+Teapot class >> new [
+	| newItem |
+	newItem := super new.
+	self teapotInstances add: newItem.
+	^ newItem 
+	
+]
+
+{ #category : 'instance creation' }
 Teapot class >> on [
 	"Create Teapot with default properties."
 	
 	^ self configure: { }
 ]
 
+{ #category : 'accessing' }
+Teapot class >> resetTeapotInstances [
+	teapotInstances := OrderedCollection new.
+	^ teapotInstances 
+]
+
 { #category : 'controlling' }
 Teapot class >> stopAll [
-	self allInstancesDo: #stop
+	self teapotInstances do: #stop.
+]
+
+{ #category : 'accessing' }
+Teapot class >> teapotInstances [
+	teapotInstances ifNil: [ self resetTeapotInstances ].
+	^ teapotInstances 
 ]
 
 { #category : 'url mapping' }
