@@ -181,6 +181,7 @@ Teapot >> any: patternActionAssoc [
 
 { #category : 'filters' }
 Teapot >> before: patternActionAssoc [
+self halt.
 	current := compositeRouter addBeforeFilter:		
 		(TeaBeforeFilter 
 			urlPattern: patternActionAssoc key asTeaUrlPattern 

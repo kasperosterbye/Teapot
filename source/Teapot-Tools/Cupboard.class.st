@@ -46,6 +46,12 @@ Cupboard class >> new [
 	self error: 'Do not create new instances - access using #soleInstance'
 ]
 
+{ #category : 'accessing' }
+Cupboard class >> open [
+	<example>
+	self soleInstance open.
+]
+
 { #category : 'private' }
 Cupboard class >> reset [
 	<script>
